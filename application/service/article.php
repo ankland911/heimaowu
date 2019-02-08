@@ -50,8 +50,6 @@ class article extends articleClass implements articleInterface{
 	public function __construct($id=null){
 		if($id){
 			$result = \think\Db::Table('article')->where('id',$id)->find();
-			$this->_next = \think\Db::Table('article')->field('id')->where('id','>',$id)->order('id asc')->find();
-			$this->_prev = \think\Db::Table('article')->field('id')->where('id','<',$id)->order('id desc')->find();
 			$this->_id = $id;
 			$this->_title = $result['title'];
 			$this->_hits = $result['hits'];
@@ -64,9 +62,6 @@ class article extends articleClass implements articleInterface{
 		}
 	}
 	
-	public function getKeywords(){
-		return $this->_keywords;
-	}
 
 	public function send(){
 		$data['status'] = '1';
@@ -75,25 +70,6 @@ class article extends articleClass implements articleInterface{
 		return $rs;
 	}
 	
-	public function getCateId(){
-		return $this->_cateId;
-	}
-
-	public function getTitle(){
-		return $this->_title;
-	}
-
-	public function getHits(){
-		return $this->_hits;
-	}
-
-	public function getID(){
-		return $this->_id;
-	}
-	
-	public function getDescription(){
-		return $this->_description;
-	}
 
 	public function addHit(){
 		$hits = (int)$this->_hits +1;
@@ -102,13 +78,7 @@ class article extends articleClass implements articleInterface{
 
 	}
 
-	public function getDay(){
-		return $this->_day;
-	}
-	
-	public function getAuthor(){
-		return $this->_author;
-	}
+
 
 	public function getAuthorName(){
 		$rs = \think\Db::Table('user')->where('id',$this->_author)->find();
@@ -124,39 +94,14 @@ class article extends articleClass implements articleInterface{
 		return $this->_mainText;
 	}
 
-	public function getNextUrl(){
-		if(null == $this->_next['id']){
-			return \think\Url::build('index/index/item',['id'=>$this->_id]);
-		}else{
-			return \think\Url::build('index/index/item',['id'=>$this->_next['id']]);
-		}
-		
-	}
-
-	public function getPrevUrl(){
-		if(null == $this->_prev['id']){
-			return \think\Url::build('index/index/item',['id'=>$this->_id]);
-		}else{
-			return \think\Url::build('index/index/item',['id'=>$this->_prev['id']]);
-		}
-		
-	}
-
-	public function fieldData($data){
-		$this->_id = $data['id'];
-		$this->_title = $data['title'];
-		$this->_author = $data['author'];
-		$this->_description = $data['description'];
-		$this->_cateId = $data['cateid'];
-		$this->_keywords = $data['keywords'];
-	}
+	
 
 	public function saveArticle(){
 		if(null==\think\Db::Table('article')->where('id',$this->_id)->find()){
 			return \think\Db::Table('article')->insertGetid(['id'=>$this->_id,'title'=>$this->_title,'author'=>$this->_author,'description'=>$this->_description,'cate_id'=>$this->_cateId,'keywords'=>$this->_keywords]);
 		}else{
 			\think\Db::Table('article')->where('id',$this->_id)->update(['title'=>$this->_title,'author'=>$this->_author,'description'=>$this->_description,'cate_id'=>$this->_cateId,'keywords'=>$this->_keywords]);
-				return $this->_id;
+			return $this->_id;
 		}
 	}
 }
