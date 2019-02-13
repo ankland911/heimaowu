@@ -2,17 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Shoes Store, free template</title>
-<meta name="keywords" content="shoes store, free template, ecommerce, online shop, website templates, CSS, HTML" />
-<meta name="description" content="Shoes Store is a free ecommerce template provided " />
-<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
-
-<link rel="stylesheet" href="nivo-slider.css" type="text/css" media="screen" />
-
-<link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" />
-
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/ddsmoothmenu.js">
+<title>{$seo.title}</title>
+<meta name="keywords" content="{$seo.keywords}" />
+<meta name="description" content="{$seo.description}" />
+<!-- <link href="templatemo_style.css" rel="stylesheet" type="text/css" /> -->
+{css href="/public/css/templatemo_style.css"}
+<!-- <link rel="stylesheet" href="nivo-slider.css" type="text/css" media="screen" /> -->
+{css href="/public/css/nivo-slider.css"}
+<!-- <link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" /> -->
+{css href="/public/css/ddsmoothmenu.css"}
+<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+{js href="/public/js/jquery.min.js"}
+<!-- <script type="text/javascript" src="js/ddsmoothmenu.js"> -->
+{js href="/public/js/ddsmoothmenu.js"}
 
 </script>
 
@@ -36,41 +38,36 @@ ddsmoothmenu.init({
 <div id="templatemo_wrapper">
 
 	<div id="templatemo_header">
-    	<div id="site_title"><h1><a href="http://www.cssmoban.com">Online Shoes Store</a></h1></div>
+    	<div id="site_title"><h1><a href="{$website.homepage}">{$website.sitename}</a></h1></div>
         <div id="header_right">
         	<p>
-	        <a href="#">My Account</a> | <a href="#">My Wishlist</a> | <a href="#">My Cart</a> | <a href="#">Checkout</a> | <a href="#">Log In</a></p>
-            <p>
-            	Shopping Cart: <strong>3 items</strong> ( <a href="shoppingcart.html">Show Cart</a> )
-			</p>
-		</div>
+	        <!-- <a href="#">My Account</a> | <a href="#">My Wishlist</a> | <a href="#">My Cart</a> | <a href="#">Checkout</a> | <a href="#">Log In</a></p> -->
+               {volist name='menu' id='me'}
+                        <a href="$me">{$key}</a> |
+                {/volist}
+                <p> Totle message: <strong>3 items</strong> ( <a href="#">Show message</a> )</p>
+        </div>
+
         <div class="cleaner"></div>
     </div> <!-- END of templatemo_header -->
     
     <div id="templatemo_menubar">
     	<div id="top_nav" class="ddsmoothmenu">
-            <ul>
-                <li><a href="index.html" class="selected">Home</a></li>
-                <li><a href="products.html">Products</a>
-                    <ul>
-                        <li><a href="http://www.cssmoban.com/">Sub menu 1</a></li>
-                        <li><a href="#">Sub menu 2</a></li>
-                        <li><a href="#">Sub menu 3</a></li>
-                        <li><a href="#">Sub menu 4</a></li>
-                        <li><a href="#">Sub menu 5</a></li>
-                  </ul>
-                </li>
-                <li><a href="about.html">About</a>
-                    <ul>
-                        <li><a href="http://www.cssmoban.com/">Sub menu 1</a></li>
-                        <li><a href="#">Sub menu 2</a></li>
-                        <li><a href="#">Sub menu 3</a></li>
-                  </ul>
-                </li>
-                <li><a href="faqs.html">FAQs</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
+                        <ul>
+                            <li><a href="{$website.homepage}" class="selected">Home</a></li>               
+                           {volist name='parents' id='me'}
+                           <li><a href="{$me.url}">{$me.title}</a></li>
+                            <?php  if(!empty($children[$me['id']]))
+                                           {
+                                                echo '<ul>';
+                                                foreach($children[$me[id]] as $key=>$value){
+                                                    echo '<li><a href="'.$value['url'].'">'.$value['title']'</a></li>';
+                                                }
+                                                echo '</ul>';
+                                           }
+                             ?>
+                            {/volist}
+                        </ul>
             <br style="clear: left" />
         </div> <!-- end of ddsmoothmenu -->
         <div id="templatemo_search">

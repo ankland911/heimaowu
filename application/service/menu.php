@@ -6,33 +6,25 @@ interface menuInterface{
 class menuClass{
 //内部变量，数组值 形如 {目录title=>目录页面url}
 	public $_menu_pool;
-	public $_cate;
+//  [ 0 => ['id'=>id,'title'=>title,'url'=>url],
+//     1=> ['id'=>id,'title'=>title,'url'=>url]
+//  ]
+	public $_parents;
+	public $_children;
 }
 
 class menu extends menuClass implements menuInterface{
 //构造函数，生成_menu_pool 数组
 	public function __construct(){
+		$this->_parents = \think\Db::Table('shoes_menus')->field('id,title,url')->select();
+		$this->build_child_menu();
+		
 	}
 
-	public function in_home(){
-		$results = array();
-		$cates = \think\Db::Table('categorys')->field('id,title,detail')->select();
-		foreach ($cates as $key => $value) {
-			$results[$value['title']] = \think\Url::build('index/index/index',array('cateid'=>$value['id']));
+	public function build_child_menu()
+	{
+		foreach ($_parents as $key => $value) {
+			$this->_children[$key] = \think\Db::Table('shoes_menus')->field('id,title,url')->where(['parentid'=>$value['id']])->select();
 		}
-		$this->_menu_pool = $results;
-	}
-
-	public function in_admin(){
-		$cates = \think\Db::Table('categorys')->field('id,title,detail')->select();
-		foreach ($cates as $key => $value) {
-			$results[$value['title']] = \think\Url::build('index/admin/article_control',array('cateid'=>$value['id']));
-		}
-		$this->_menu_pool = $results;
-	}
-
-	public function get_data_menu(){
-		$results = array();
-		$this->_cate = \think\Db::Table('categorys')->field('id,title,detail')->select();
 	}
 }
