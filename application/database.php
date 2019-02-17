@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '127.0.0.1',
+    'hostname'        => 'ankland911.gotoip3.com',
     // 数据库名
-    'database'        => '',
+    'database'        => 'ankland911',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'ankland911',
     // 密码
-    'password'        => '',
+    'password'        => 'kuailong88',
     // 端口
     'hostport'        => '',
     // 连接dsn

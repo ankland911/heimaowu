@@ -1,5 +1,5 @@
 <?php
-namespace app\service\menu;
+namespace app\shoes\service;
 interface menuInterface{
 }
 
@@ -23,7 +23,7 @@ class menu extends menuClass implements menuInterface{
 
 	public function build_child_menu()
 	{
-		foreach ($_parents as $key => $value) {
+		foreach ($this->_parents as $key => $value) {
 			$this->_children[$key] = \think\Db::Table('shoes_menus')->field('id,title,url')->where(['parentid'=>$value['id']])->select();
 		}
 	}
