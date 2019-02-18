@@ -47,10 +47,10 @@ ddsmoothmenu.init({
 	<div id="templatemo_header">
     	<div id="site_title"><h1><a href="#">{$website.sitename} {$website.short_url}</a></h1></div>
         <div id="header_right">
-        	<p>
+        	<!-- <p>
             <a href="#">My Account</a> | <a href="#">愿望清单</a> | <a href="#">我的收藏</a> | <a href="#">登陆</a></p>
               
-                <p> 未读消息: <strong>3</strong> ( <a href="#">阅读消息</a> )</p>
+                <p> 未读消息: <strong>3</strong> ( <a href="#">阅读消息</a> )</p> -->
 		</div>
         <div class="cleaner"></div>
     </div> <!-- END of templatemo_header -->
@@ -102,7 +102,7 @@ ddsmoothmenu.init({
                 <div class="content"> 
                 	{volist name='recommand' id='re'}
                            <div class="bs_box">
-                            <a href="#"><img src="{$re.image}" alt="image" width="58" /></a>
+                            <a href="#"><img src="{$re.image_path}" alt="image" width="58" /></a>
                             <h4><a href="#">{$re.title}</a></h4>
                             <p class="price">{$re.price}</p>
                             <div class="cleaner"></div>
@@ -114,7 +114,7 @@ ddsmoothmenu.init({
         <div id="content" class="float_r">
         	<h1>商品详情</h1>
             <div class="content_half float_l">
-        	<a  rel="lightbox[portfolio]" href="images/product/10_l.jpg"><img src="{$product.image}" alt="image" width="300" /></a>
+        	<a  rel="lightbox[portfolio]" href="images/product/10_l.jpg"><img src="{$product.image_path}" alt="image" width="300" /></a>
             </div>
             <div class="content_half float_r">
                 <table>

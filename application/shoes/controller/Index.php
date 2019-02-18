@@ -27,8 +27,9 @@ class Index extends \think\Controller
         return $this->fetch('index');
     }
 
-    public function products()
+    public function products($cate)
     {
+        $this->assign('products',product_pool::build_by_category($cate));
         return $this->fetch('products');
     }
 

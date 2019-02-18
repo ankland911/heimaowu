@@ -40,10 +40,10 @@ ddsmoothmenu.init({
 	<div id="templatemo_header">
     	<div id="site_title"><h1><a href="{$website.homepage}">{$website.sitename}</a></h1></div>
         <div id="header_right">
-        	<p>
+        	<!-- <p>
 	        <a href="#">My Account</a> | <a href="#">愿望清单</a> | <a href="#">我的收藏</a> | <a href="#">登陆</a></p>
               
-                <p> 未读消息: <strong>3</strong> ( <a href="#">阅读消息</a> )</p>
+                <p> 未读消息: <strong>3</strong> ( <a href="#">阅读消息</a> )</p> -->
         </div>
 
         <div class="cleaner"></div>
@@ -68,12 +68,12 @@ ddsmoothmenu.init({
                         </ul>
             <br style="clear: left" />
         </div> <!-- end of ddsmoothmenu -->
-        <div id="templatemo_search">
+        <!-- <div id="templatemo_search">
             <form action="#" method="get">
               <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
               <input type="submit" name="Search" value=" " alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
             </form>
-        </div>
+        </div> -->
     </div> <!-- END of templatemo_menubar -->
 	<!-- <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网页模板">网页模板</a></div> -->
     
@@ -130,9 +130,6 @@ ddsmoothmenu.init({
                     {volist name='slider_pool' id='slider'}
                     <a href="{$slider.slider_url}" target="_blank"><img src="{$slider.slider_image_path}" alt="" title="{$slider.slider_title}"/></a>
                     {/volist}
-                    <a href="#"><img src="/public/images/slider/01.jpg" alt="" title="This is an example of a caption" /></a>
-                    <img src="/public/images/slider/03.jpg" alt="" />
-                    <img src="/public/images/slider/04.jpg" alt="" title="#htmlcaption" />
                 </div>
                 <div id="htmlcaption" class="nivo-html-caption">
                     <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
@@ -151,7 +148,7 @@ ddsmoothmenu.init({
             {volist name='products' id='product' mod='4'}
             <div class="product_box {eq name='mod' value='2'}no_margin_right{/eq}">
 	            <h3></h3>
-            	<a href="#"><img src="{$product.image}" alt="Shoes 1" width="200" /></a>
+            	<a href="#"><img src="{$product.image_path}" alt="Shoes 1" width="200" /></a>
                 <p>{$product.title}</p>
                 <p class="product_price">{$product.price}</p>
                 <!-- <a href="shoppingcart.html" class="addtocart"></a> -->
