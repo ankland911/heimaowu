@@ -1,5 +1,5 @@
 <?php
-namespace app\service\item;
+namespace app\shoes\service\item;
 class itemClass{
 	public $data;
 	/*

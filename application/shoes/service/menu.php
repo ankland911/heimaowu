@@ -1,5 +1,5 @@
 <?php
-namespace app\service\menu;
+namespace app\shoes\service\menu;
 interface menuInterface{
 }
 

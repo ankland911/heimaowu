@@ -1,5 +1,5 @@
 <?php
-namespace app\service\article;
+namespace app\shoes\service\article;
 
 interface articleInterface{
 //类操作函数，获取文章标题

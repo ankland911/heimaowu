@@ -19,4 +19,9 @@ class Index
     {
         return $this->fetch('products');
     }
+
+    public function search()
+    {
+        return $this->fetch('products');
+    }
 }

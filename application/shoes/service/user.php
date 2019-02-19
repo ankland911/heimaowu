@@ -1,5 +1,5 @@
 <?php
-namespace app\service\user;
+namespace app\shoes\service\user;
 interface userInterface{
 
 }

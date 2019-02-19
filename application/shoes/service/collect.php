@@ -1,5 +1,5 @@
 <?php
-namespace app\service\collect;
+namespace app\shoes\service\collect;
 //组成页面所需的数组集合的收集类
 interface collectInterface{
 //获取推荐文章，用于在各种页面生成推荐文章列表
