@@ -8,9 +8,9 @@ use app\shoes\service\product;
 class product_pool
 {
 	
-	public static function build()
+	public static function build($limit=12)
 	{
-		$rs = \think\Db::Table('shoes_products')->field('id')->select();
+		$rs = \think\Db::Table('shoes_products')->field('id')->limit($limit)->select();
 		$pool = [];
 		$count = 0;
 		foreach ($rs as $key => $value) {

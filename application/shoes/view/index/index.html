@@ -145,14 +145,14 @@ ddsmoothmenu.init({
             });
             </script>
         	<h1>首页推荐</h1>
-            {volist name='products' id='product' mod='4'}
+            {volist name='products' id='product' mod='3'}
             <div class="product_box {eq name='mod' value='2'}no_margin_right{/eq}">
 	            <h3></h3>
-            	<a href="#"><img src="{$product.image_path}" alt="Shoes 1" width="200" /></a>
+            	<a href="{$product.tbk_link}" target="_blank"><img src="{$product.image_path}" alt="Shoes 1" width="200" /></a>
                 <p>{$product.title}</p>
                 <p class="product_price">{$product.price}</p>
                 <!-- <a href="shoppingcart.html" class="addtocart"></a> -->
-                <a href="productdetail.html" class="detail"></a>
+                <a href="{$product.tbk_link}" target="_blank" class="detail"></a>
             </div>
             {eq name='mod' value='2'}<div class="cleaner"></div>{/eq}
             {/volist}
