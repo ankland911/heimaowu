@@ -83,12 +83,12 @@ ddsmoothmenu.init({
             	<h3>按鞋子种类</h3>   
                 <div class="content"> 
                 	<ul class="sidebar_list">
-                    	<li class="first"><a href="#">{$categorys.0.title}</a></li>
+                    	<li class="first"><a href="{$categorys.0.url}">{$categorys.0.title}</a></li>
                         <?php for($id=1;$id<sizeof($categorys)-1;$id++){
-                            echo '<li><a href="'.'#'.'">'.$categorys[$id]['title'].'</a></li>';
+                            echo '<li><a href="'.$categorys[$id]['url'].'">'.$categorys[$id]['title'].'</a></li>';
                         }
                         ?>
-                        <li class="last"><a href="#"><?php echo $categorys[sizeof($categorys)-1]['title'];?></a></li>
+                        <li class="last"><a href="<?php echo $categorys[sizeof($categorys)-1]['url'];?>"><?php echo $categorys[sizeof($categorys)-1]['title'];?></a></li>
                     </ul>
                 </div>
             </div>
@@ -152,11 +152,11 @@ ddsmoothmenu.init({
                 <p>{$product.title}</p>
                 <p class="product_price">{$product.price}</p>
                 <!-- <a href="shoppingcart.html" class="addtocart"></a> -->
-                <a href="{$product.tbk_link}" target="_blank" class="detail"></a>
+                <a href="{$product.url}" target="_blank" class="detail"></a>
             </div>
             {eq name='mod' value='2'}<div class="cleaner"></div>{/eq}
             {/volist}
-
+            
   <!--           <div class="product_box no_margin_right">
             	<h3>Mauris consectetur</h3>
             	<a href="productdetail.html"><img src="/public/images/product/03.jpg" alt="Shoes 3" /></a>
@@ -193,7 +193,9 @@ ddsmoothmenu.init({
                 <a href="productdetail.html" class="detail"></a>
             </div>  -->       	
         </div> 
+        
         <div class="cleaner"></div>
+
     </div> <!-- END of templatemo_main -->
     
     <div id="templatemo_footer">
@@ -204,7 +206,7 @@ ddsmoothmenu.init({
             <a href="#">Contact Us</a>
 		</p>
 
-    	Copyright © 2072 <a href="#">{$seo.title} heimaowu.cn</a> | 备案号： <a href="http://www.cssmoban.com" target="_parent">皖ICP备15008357号</a>
+    	Copyright © 2072 <a href="#">{$seo.title} heimaowu.cn</a> | 备案号： <a href="#" target="_parent">皖ICP备15008357号</a>
     </div> <!-- END of templatemo_footer -->
     
 </div> <!-- END of templatemo_wrapper -->

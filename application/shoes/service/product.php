@@ -16,7 +16,8 @@ class product
 			$this->information['image_path'] = picture::get($url) or $file_path = '';
 			\think\Db::Table('shoes_products')->update($this->information);
 		}
-		
-
+		$this->information['url'] = url('shoes/index/product_detail',['id'=>$this->information['id']]);
+		$category = \think\Db::Table('shoes_cate_list')->where('product_id',$id)->find();
+		$this->information['category_id'] = $category['category_id'];
 	}
 }

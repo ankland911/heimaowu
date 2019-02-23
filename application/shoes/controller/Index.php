@@ -21,23 +21,45 @@ class Index extends \think\Controller
     }
     public function index()
     {
-        $this->assign('products',product_pool::build());
+        $product_pool = new product_pool();
+        $product_pool->build();
+        $this->assign('products',$product_pool->pool);
         $slider = new slider(0);
         $this->assign('slider_pool',$slider->slider_pool); 
         return $this->fetch('index');
     }
 
-    public function products($cate=3)
+    public function products($cate=0)
     {
-        $this->assign('category_title',\think\Db::Table('shoes_categorys')->where('id',$cate)->field('title')->find());
-        $this->assign('products',product_pool::build_by_category($cate));
+        $product_pool = new product_pool();
+        if(0==$cate){
+            $this->assign('category_title',['title'=>'鞋品库']);
+            $product_pool->build();
+        }else{
+            $product_pool->build_by_category($cate);
+            $this->assign('category_title',\think\Db::Table('shoes_categorys')->where('id',$cate)->field('title')->find());
+        }
+        
+        
+        
+        $this->assign('products',$product_pool->pool);
+        $this->assign('render',$product_pool->render);
         return $this->fetch('products');
     }
 
     public function product_detail($id=0)
     {
-        $product = new product('571053833335');
+        $product = new product($id);
         $this->assign('product',$product->information);
+        $this->assign('recommand_by_c',product_pool::recommand_by_cate(5,$product->information['category_id']));
         return $this->fetch('productdetail');
+    }
+
+    public function about(){
+        return $this->fetch('about');
+    }
+
+    public function contact(){
+        return $this->fetch('contact');
     }
 }

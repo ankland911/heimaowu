@@ -10,6 +10,7 @@ class category_pool
 		$pool= [];
 		foreach ($rs as $key => $value) {
 			$pool[$count] = $value;
+			$pool[$count]['url'] = url('shoes/index/products',['cate'=>$value['id']]);
 			$count ++ ;
 		}
 		return $pool;
